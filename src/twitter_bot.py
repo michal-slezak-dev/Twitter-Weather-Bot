@@ -5,7 +5,6 @@ from dotenv import load_dotenv
 import os
 from collections import defaultdict
 import time
-from pprint import pprint
 
 load_dotenv()  # take environment variables from .env.
 
@@ -60,7 +59,7 @@ def reply_with_the_weather_forecast():
     ZERO_DEGREES_CELSIUS = 273.15
 
     last_responded_id = get_already_responded(FILE)
-    mentions = api.mentions_timeline(last_responded_id, tweet_mode="extended")
+    mentions = api.mentions_timeline(since_id=last_responded_id, tweet_mode="extended")
 
     # most recent mentions(reversed)
     for mention in reversed(mentions):
